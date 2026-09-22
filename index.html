@@ -6,27 +6,30 @@
 <title>Michelle Sanchez — Pottery</title>
 <meta name="description" content="A small collection of handmade pottery.">
 <style>
+  /* Palette taken from the green-glazed bowl: the olive-sage of the glaze,
+     the near-black where it pools in the well, and the soft ground of the
+     carved tile behind it. */
   :root {
-    --bg:        #faf6f0;
-    --bg-tint:   #f2ebe0;
-    --ink:       #2f2b27;
-    --ink-soft:  #6d6459;
-    --line:      #e3d9ca;
-    --clay:      #a95f3f;
-    --clay-soft: #dcbca8;
-    --shadow:    rgba(70, 52, 38, 0.10);
+    --bg:         #f1f1e5;
+    --bg-tint:    #e4e5d5;
+    --ink:        #23281f;
+    --ink-soft:   #5f6554;
+    --line:       #d5d7c3;
+    --glaze:      #445a3e;
+    --glaze-soft: #b4bda2;
+    --shadow:     rgba(35, 40, 31, 0.10);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg:        #1a1817;
-      --bg-tint:   #242120;
-      --ink:       #ece4d9;
-      --ink-soft:  #a79c8e;
-      --line:      #363130;
-      --clay:      #d08a66;
-      --clay-soft: #5c4335;
-      --shadow:    rgba(0, 0, 0, 0.35);
+      --bg:         #171a15;
+      --bg-tint:    #1f231c;
+      --ink:        #e7e9dc;
+      --ink-soft:   #9aa08d;
+      --line:       #2f342b;
+      --glaze:      #93ad81;
+      --glaze-soft: #49533e;
+      --shadow:     rgba(0, 0, 0, 0.40);
     }
   }
 
@@ -55,6 +58,7 @@
 
   header {
     max-width: 34rem;
+    margin-inline: auto;
   }
 
   .eyebrow {
@@ -67,6 +71,7 @@
 
   h1 {
     margin: 0;
+    text-wrap: balance;
     font-size: clamp(2.5rem, 7vw, 3.9rem);
     font-weight: 400;
     line-height: 1.08;
@@ -75,6 +80,7 @@
 
   .tagline {
     margin: 18px 0 0;
+    text-wrap: balance;
     font-size: 1.12rem;
     font-style: italic;
     color: var(--ink-soft);
@@ -87,7 +93,7 @@
     align-items: center;
     gap: 18px;
     margin: clamp(48px, 8vw, 72px) 0;
-    color: var(--clay);
+    color: var(--glaze);
   }
 
   .ornament::before,
@@ -113,6 +119,11 @@
     text-align: center;
   }
 
+  .about-body {
+    display: grid;
+    gap: 1.15em;
+  }
+
   h2 {
     margin: 0 0 20px;
     text-align: left;
@@ -124,16 +135,13 @@
   }
 
   .about p {
-    margin: 0 0 1.1em;
-  }
-
-  .about p:last-child {
-    margin-bottom: 0;
+    margin: 0;
+    text-wrap: pretty;
   }
 
   .about strong {
     font-weight: 400;
-    color: var(--clay);
+    color: var(--glaze);
   }
 
   /* ---------- Gallery ---------- */
@@ -187,7 +195,7 @@
     background:
       repeating-radial-gradient(
         circle at 50% 54%,
-        var(--clay-soft) 0 1px,
+        var(--glaze-soft) 0 1px,
         transparent 1px 15px
       ),
       var(--bg-tint);
@@ -214,7 +222,7 @@
 
   figcaption .meta {
     display: block;
-    margin-top: 2px;
+    margin-top: 4px;
     font-size: 0.82rem;
     font-style: italic;
     color: var(--ink-soft);
@@ -232,6 +240,18 @@
 
   footer p {
     margin: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--glaze);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   @media (max-width: 480px) {
@@ -261,6 +281,7 @@
 
   <section class="about">
     <h2>About</h2>
+    <div class="about-body">
     <p>
       I&rsquo;m a <strong>psychology major</strong>. Most of my days are spent reading about
       how people think &mdash; which turns out to be lovely company for a craft that asks you
@@ -275,6 +296,7 @@
       nothing is on a deadline. These are just the pieces I liked enough to keep
       and images of some of the process.
     </p>
+    </div>
   </section>
 
   <section class="gallery">
