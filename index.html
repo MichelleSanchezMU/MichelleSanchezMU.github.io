@@ -17,6 +17,9 @@
     --line:       #d5d7c3;
     --glaze:      #445a3e;
     --glaze-soft: #b4bda2;
+    --field:      #1e2a1b;
+    --field-ink:  #eaeddf;
+    --field-soft: #a3b596;
     --shadow:     rgba(35, 40, 31, 0.10);
   }
 
@@ -29,6 +32,9 @@
       --line:       #2f342b;
       --glaze:      #93ad81;
       --glaze-soft: #49533e;
+      --field:      #212d1e;
+      --field-ink:  #eaeddf;
+      --field-soft: #a3b596;
       --shadow:     rgba(0, 0, 0, 0.40);
     }
   }
@@ -39,7 +45,7 @@
 
   body {
     margin: 0;
-    padding: 0 16px;
+    padding: 0;
     background: var(--bg);
     color: var(--ink);
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
@@ -51,18 +57,55 @@
   .page {
     max-width: 1040px;
     margin: 0 auto;
-    padding: clamp(56px, 10vw, 112px) 0 72px;
+    padding-inline: 16px;
+    padding-block: clamp(40px, 7vw, 72px) 72px;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  /* The one loud moment: a full-bleed field of pooled glaze, carrying
+     the faint concentric rings a pot leaves on the wheel. */
+  .masthead {
+    position: relative;
+    overflow: hidden;
+    background: var(--field);
+    color: var(--field-ink);
+    padding-inline: 16px;
+    padding-block: clamp(72px, 16vw, 152px);
+  }
+
+  .masthead::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-radial-gradient(
+      circle at 78% 50%,
+      rgba(255, 255, 255, 0.055) 0 1px,
+      transparent 1px 22px
+    );
+    pointer-events: none;
+  }
+
+  .masthead-inner {
+    position: relative;
+    max-width: 1040px;
+    margin-inline: auto;
+  }
+
+  .masthead .eyebrow,
+  .masthead .tagline {
+    color: var(--field-soft);
   }
 
   /* ---------- Header ---------- */
 
-  header {
+  .masthead header {
     max-width: 34rem;
     margin-inline: auto;
   }
 
   .eyebrow {
-    margin: 0 0 18px;
+    margin: 0 0 22px;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -72,14 +115,14 @@
   h1 {
     margin: 0;
     text-wrap: balance;
-    font-size: clamp(2.5rem, 7vw, 3.9rem);
+    font-size: clamp(2.9rem, 9.5vw, 6rem);
     font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.015em;
+    line-height: 0.97;
+    letter-spacing: -0.025em;
   }
 
   .tagline {
-    margin: 18px 0 0;
+    margin: 26px 0 0;
     text-wrap: balance;
     font-size: 1.12rem;
     font-style: italic;
@@ -92,7 +135,8 @@
     display: flex;
     align-items: center;
     gap: 18px;
-    margin: clamp(48px, 8vw, 72px) 0;
+    /* .page already supplies the space above; only the gap below is ours. */
+    margin: 0 0 clamp(44px, 7vw, 68px);
     color: var(--glaze);
   }
 
@@ -262,13 +306,17 @@
 </head>
 <body>
 
-<div class="page">
+<div class="masthead">
+  <div class="masthead-inner">
+    <header>
+      <p class="eyebrow">Pottery</p>
+      <h1>Michelle Sanchez</h1>
+      <p class="tagline">Small things made slowly, by hand.</p>
+    </header>
+  </div>
+</div>
 
-  <header>
-    <p class="eyebrow">Pottery</p>
-    <h1>Michelle Sanchez</h1>
-    <p class="tagline">Small things made slowly, by hand.</p>
-  </header>
+<div class="page">
 
   <div class="ornament" aria-hidden="true">
     <!-- A little vessel, drawn inline so nothing loads from anywhere else. -->
