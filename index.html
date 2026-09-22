@@ -109,10 +109,13 @@
 
   .about {
     max-width: 34rem;
+    margin-inline: auto;
+    text-align: center;
   }
 
   h2 {
     margin: 0 0 20px;
+    text-align: left;
     font-size: 0.74rem;
     font-weight: 400;
     letter-spacing: 0.22em;
@@ -139,9 +142,17 @@
     margin-top: clamp(56px, 9vw, 88px);
   }
 
+  /* The WORK label shares the About column's left edge, so the two
+     section headings line up with each other. */
+  .gallery h2 {
+    max-width: 34rem;
+    margin-inline: auto;
+  }
+
   .grid {
     display: grid;
     max-width: 760px;
+    margin-inline: auto;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: clamp(24px, 4vw, 40px);
     margin-top: 32px;
@@ -196,6 +207,7 @@
 
   figcaption {
     margin-top: 14px;
+    text-align: center;
     font-size: 0.95rem;
     line-height: 1.5;
   }
